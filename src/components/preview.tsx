@@ -1,6 +1,8 @@
+import { isNull } from 'lodash';
 import React from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
+
 import './preview.css';
 
 interface PreviewProps {
@@ -45,7 +47,9 @@ const Preview: React.FC<PreviewProps> = ({ code, err }) => {
   useEffect(() => {
     iframe.current.srcdoc = html;
     setTimeout(() => {
-      iframe.current.contentWindow.postMessage(code, '*');
+      if (!isNull(iframe.current.contentWindow)) {
+        iframe.current.contentWindow.postMessage(code, '*');
+      }
     }, 50);
   }, [code])
 

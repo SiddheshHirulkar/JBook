@@ -20,12 +20,12 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 8px 0px 8px 16px;
+  padding: 8px 0px 8px 0px;
   list-style: none;
   height: 60px;
 }
 
-.sidebar-collapse {
+.sidebar-main-menu {
   color: #f5f5f5;
   font-size: 18px;
   height: 100%;
@@ -36,7 +36,7 @@
   cursor: pointer;
 }
 
-.sidebar-collapse:hover {
+.sidebar-main-menu:hover {
   background-color: #d16318;
 }
 
