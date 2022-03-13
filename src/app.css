@@ -1,0 +1,8 @@
+.display-flex {
+  display: flex;
+}
+
+.cell-container {
+  width: 100%;
+  background-color: #201e1a;
+}
