@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 
 import { store } from './state';
 import CellList from './components/cell-list';
-import Sidebar from './components/sidebar/sidebar';
 import Navbar from './components/navbar/navbar';
 import './app.css';
 

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import 'react-pro-sidebar/dist/css/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClose, faFolder } from '@fortawesome/free-solid-svg-icons'
+import { faClose } from '@fortawesome/free-solid-svg-icons'
 
-import FolderTreeComponent from '../folderTree/folder-tree';
+import FolderTreeContainer from '../folderTree/folder-tree-container';
+import { folderTreeState } from '../folderTree/folderTree-interface';
 import './sidebar.css';
 
 interface SidebarProps {
@@ -12,6 +12,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ sidebar, showSidebar }) => {
+
   return (
     <Fragment>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -21,8 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebar, showSidebar }) => {
               <FontAwesomeIcon icon={faClose} />
             </span>
           </li>
-          {/* Sidebar items */}
-          <FolderTreeComponent />
+          <FolderTreeContainer folderTreeState={folderTreeState} />
         </ul>
       </nav>
     </Fragment>
