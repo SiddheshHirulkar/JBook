@@ -1,6 +1,7 @@
 import { ActionTypes } from '../action-types';
 import { CellType, CellDirection } from '../cell';
 
+/* --------------Actions for dealing with cells ----------------------- */
 export interface MoveCellAction {
   type: ActionTypes.MOVE_CELL;
   payload: {
@@ -47,5 +48,9 @@ export interface BundleCompleteAction {
     }
   }
 }
+
+/* ------------------------ Action for CRUD operation of Folder -------------------------- */
+
+
 
 export type Action = MoveCellAction | DeleteCellAction | InsertCellAfterAction | UpdateCellAction | BundleStartAction | BundleCompleteAction;

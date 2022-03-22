@@ -1,18 +1,44 @@
-import React from 'react';
-import FolderTree, { testData } from 'react-folder-tree';
-import 'react-folder-tree/dist/style.css';
+import React, { Fragment } from 'react';
 
-const FolderTreeComponent: React.FC = () => {
-  const onTreeStateChange = (state: object, event: any) => {
-    console.log(state, event);
-  }
+import { FolderTreeStructure } from './folderTree-interface';
+import './folder-tree.css';
+import { isEmpty, isUndefined } from 'lodash';
+import FolderComponent from './folder-component';
+import FileComponent from './file-component';
+
+interface FolderTreeComponentProps {
+  folderTreeState: FolderTreeStructure;
+}
+
+const FolderTreeComponent: React.FC<FolderTreeComponentProps> = ({ folderTreeState }) => {  
+  console.log(folderTreeState, 'foldertreestate')
+
+  const renderFolderTree = folderTreeState instanceof Array && (
+    folderTreeState.map((node) => {
+      if (node.type === 'folder' && isEmpty(node.items)) {
+        return (
+          <FolderComponent {...node} />
+        )
+      } else if (node.type === 'folder' && !isEmpty(node.items)) {
+        return (
+          <Fragment>
+            <FolderComponent {...node} />
+            <FolderTreeComponent folderTreeState={node.items} />
+          </Fragment>
+        )
+      } else if (node.type === 'file') {
+        return (
+          <FileComponent {...node} />
+        )
+      }
+      return null;
+    })
+  );
 
   return (
-    <FolderTree
-      data={ testData }
-      onChange={ onTreeStateChange }
-      showCheckbox={false}
-    />
+    <Fragment>
+      {!isUndefined(folderTreeState) ? renderFolderTree : ''}
+    </Fragment>
   );
 };
 
