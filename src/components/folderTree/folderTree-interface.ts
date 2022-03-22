@@ -27,12 +27,35 @@ export const folderTreeState: FolderTreeStructure = [
     items: [
       {
         type: 'folder',
-        name: 'domestic animals',
-        items: []
+        name: 'Domestic animals',
+        items: [
+          {
+            type: 'file',
+            name: 'Cow.ts'
+          },
+          {
+            type: 'file',
+            name: 'Goat.ts'
+          },
+          {
+            type: 'file',
+            name: 'Dog.ts'
+          }
+        ]
       },
       {
-        type: 'file',
-        name: 'cow.ts'
+        type: 'folder',
+        name: 'Wild animals',
+        items: [
+          {
+            type: 'file',
+            name: 'Tiger.ts'
+          },
+          {
+            type: 'file',
+            name: 'Lion.ts'
+          }
+        ]
       }
     ]
   }

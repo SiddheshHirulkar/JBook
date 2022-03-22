@@ -11,24 +11,27 @@ interface FolderTreeComponentProps {
 }
 
 const FolderTreeComponent: React.FC<FolderTreeComponentProps> = ({ folderTreeState }) => {  
-  console.log(folderTreeState, 'foldertreestate')
-
+  
   const renderFolderTree = folderTreeState instanceof Array && (
     folderTreeState.map((node) => {
       if (node.type === 'folder' && isEmpty(node.items)) {
         return (
-          <FolderComponent {...node} />
+          <div className="margin-left-10">
+            <FolderComponent {...node} />
+          </div>
         )
       } else if (node.type === 'folder' && !isEmpty(node.items)) {
         return (
-          <Fragment>
+          <div className="margin-left-10">
             <FolderComponent {...node} />
             <FolderTreeComponent folderTreeState={node.items} />
-          </Fragment>
+          </div>
         )
       } else if (node.type === 'file') {
         return (
-          <FileComponent {...node} />
+          <div className="margin-left-10">
+            <FileComponent {...node} />
+          </div>
         )
       }
       return null;

@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-.margin-left-5px {
+.margin-left-5 {
   margin-left: 5px;
 }
 
@@ -140,4 +140,8 @@
 
 .tree-file-container:hover .tree-file-icon-specification {
   opacity: 1;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
 }

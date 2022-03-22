@@ -10,7 +10,7 @@ interface FileComponentProps {
 const FileComponent: React.FC<FileComponentProps> = ({ name }) => {
   return (
     <Fragment>
-      <li className="tree-file-container margin-left-5px">
+      <li className="tree-file-container">
         <span className="tree-file-specifications">
           <FontAwesomeIcon className="file-icon" icon={faFile} />
           <p className="file-text">{name}</p>
