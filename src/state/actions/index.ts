@@ -49,8 +49,31 @@ export interface BundleCompleteAction {
   }
 }
 
+/* ------------------------ Action for open/close status of Folder -------------------------- */
+export interface SetFolderStatusAction {
+  type: ActionTypes.SET_FOLDER_STATUS;
+  payload: {
+    childrenTreeState: object
+  }
+}
+
+export interface ChangeFolderStatusAction {
+  type: ActionTypes.CHANGE_FOLDER_STATUS;
+  payload: {
+    folderId: string
+  }
+}
+
 /* ------------------------ Action for CRUD operation of Folder -------------------------- */
 
 
 
-export type Action = MoveCellAction | DeleteCellAction | InsertCellAfterAction | UpdateCellAction | BundleStartAction | BundleCompleteAction;
+export type Action = 
+  MoveCellAction | 
+  DeleteCellAction | 
+  InsertCellAfterAction | 
+  UpdateCellAction | 
+  BundleStartAction | 
+  BundleCompleteAction |
+  SetFolderStatusAction |
+  ChangeFolderStatusAction;

@@ -6,7 +6,9 @@ import {
   DeleteCellAction,
   MoveCellAction,
   InsertCellAfterAction,
-  Action
+  Action,
+  SetFolderStatusAction,
+  ChangeFolderStatusAction
 } from '../actions';
 import bundle from '../../bundler';
 
@@ -65,5 +67,24 @@ export const createBundle = (cellId: string, input: string) => {
         bundle: result
       }
     });
+  }
+}
+
+/* ------------------------------- Action Creators to Set folder open/close status ------------------------------ */
+export const setFolderStatus = (childrenTreeState: object): SetFolderStatusAction => {
+  return {
+    type: ActionTypes.SET_FOLDER_STATUS,
+    payload: {
+      childrenTreeState
+    }
+  }
+};
+
+export const changeFolderStatus = (folderId: string): ChangeFolderStatusAction => {
+  return {
+    type: ActionTypes.CHANGE_FOLDER_STATUS,
+    payload: {
+      folderId
+    }
   }
 }
