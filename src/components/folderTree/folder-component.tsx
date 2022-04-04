@@ -5,17 +5,19 @@ import { faFile, faFolder, faFolderPlus, faPencil, faTrash } from '@fortawesome/
 import { FolderTreeStructure, FileStructure } from './folderTree-interface';
 
 interface FolderComponentProps {
+  id: string;
   type: string;
   name: string;
-  items?: FileStructure | FolderTreeStructure
+  items?: FileStructure | FolderTreeStructure;
+  handleClick(id: string): void;
 }
 
-const FolderComponent: React.FC<FolderComponentProps> = ({ name }) => {
+const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick }) => {
   return (
     <Fragment>
       <li className="tree-folder-container">
         <span className="tree-folder-specifications">
-          <FontAwesomeIcon className="folder-icon" icon={faFolder} />
+          <FontAwesomeIcon className="folder-icon" onClick={() => handleClick(id)} icon={faFolder} />
           <p className="folder-text">{name}</p>
         </span>
         <span className="tree-folder-icon-specification">
