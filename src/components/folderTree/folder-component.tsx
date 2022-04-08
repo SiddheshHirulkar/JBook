@@ -4,7 +4,7 @@ import { faFile, faFolder, faFolderPlus, faPencil, faTrash } from '@fortawesome/
 import { isNull, isUndefined } from 'lodash';
 
 import { FolderTreeStructure, FileStructure } from './folderTree-interface';
-import NewFolderComponent from './new-folder-component';
+import NewFolderFileComponent from './new-folder-file-component';
 
 interface FolderComponentProps {
   id: string;
@@ -17,6 +17,9 @@ interface FolderComponentProps {
 const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick }) => {
   
   const [showNewFolder, setShowNewFolder] = useState(false);
+  const [showRenameFolder, setShowRenameFolder] = useState(false);
+  const [fieldType, setFieldType] = useState<'folder' | 'file'>('folder');
+  const [folderName, setFolderName] = useState('');
   let fieldRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,6 +28,7 @@ const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick
       sidebar.addEventListener('click', (event: any) => {
         if (!isNull(fieldRef.current) && !fieldRef.current.contains(event.target)) {
           setShowNewFolder(false);
+          setShowRenameFolder(false);
         }
       });
     }
@@ -37,7 +41,18 @@ const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick
   }
 
   const createNewFolder = () => {
+    setFieldType('folder');
     setShowNewFolder(!showNewFolder);
+  }
+
+  const createNewFile = () => {
+    setFieldType('file');
+    setShowNewFolder(!showNewFolder);
+  }
+
+  const renameEntity = () => {
+    setShowRenameFolder(!showRenameFolder);
+    setFolderName(name);
   }
   
   return (
@@ -45,21 +60,32 @@ const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick
       <li className="tree-folder-container">
         <span className="tree-folder-specifications">
           <FontAwesomeIcon className="folder-icon" onClick={folderIconClick} icon={faFolder} />
-          <p className="folder-text">{name}</p>
+          {showRenameFolder ? (
+            <p className="folder-text" ref={fieldRef}>
+              <NewFolderFileComponent 
+                setShowField={setShowRenameFolder}
+                childType={fieldType}
+                oldFieldName={folderName}
+              />
+            </p>
+            ) : (<p className="folder-text">{name}</p>)
+          }
         </span>
         <span className="tree-folder-icon-specification">
           <FontAwesomeIcon className="tree-folder-icon" icon={faFolderPlus} onClick={createNewFolder} />
-          <FontAwesomeIcon className="tree-folder-icon" icon={faFile} />
-          <FontAwesomeIcon className="tree-folder-icon" icon={faPencil} />
+          <FontAwesomeIcon className="tree-folder-icon" icon={faFile} onClick={createNewFile} />
+          <FontAwesomeIcon className="tree-folder-icon" icon={faPencil} onClick={renameEntity} />
           <FontAwesomeIcon className="tree-folder-icon" icon={faTrash} />
         </span>
       </li>
       {showNewFolder &&
         <li className="tree-new-folder">
           <div ref={fieldRef}>
-            <NewFolderComponent 
+            <NewFolderFileComponent 
               containerClass="margin-left-22"
               setShowField={setShowNewFolder}
+              childType={fieldType}
+              oldFieldName={folderName}
             />
           </div>
         </li>

@@ -6,7 +6,7 @@ import FolderTreeComponent from './folder-tree';
 import { FolderTreeStructure } from './folderTree-interface';
 import { makeFolderIdState } from './folder-tree-utils';
 import { useActions } from '../../hooks/use-actions';
-import NewFolderComponent from './new-folder-component';
+import NewFolderFileComponent from './new-folder-file-component';
 import { isNull } from 'lodash';
 
 interface FolderTreeContainerProps {
@@ -56,9 +56,10 @@ const FolderTreeContainer: React.FC<FolderTreeContainerProps> = ({ folderTreeSta
       {showNewFolderField && 
         <li>
           <div ref={fieldRef}>
-            <NewFolderComponent 
+            <NewFolderFileComponent 
               containerClass="margin-left-22"
               setShowField={setshowNewFolderField}
+              childType="folder"
             />
           </div>
         </li>
