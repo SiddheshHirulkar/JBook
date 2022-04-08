@@ -6,7 +6,15 @@ interface FolderTreeState {
   folderState: object;
 }
 
-const initialState: FolderTreeState = {
+interface FolderState {
+  [key: string]: boolean;
+}
+
+interface FolderStatus {
+  folderState: FolderState | {}
+}
+
+const initialState: FolderStatus = {
   folderState: {}
 };
 
@@ -19,7 +27,7 @@ const folderTreeState = produce((state: FolderTreeState = initialState, action: 
       }
 
     case ActionTypes.CHANGE_FOLDER_STATUS:
-      let folderStatus: any = {...state.folderState};
+      let folderStatus: FolderState = {...state.folderState};
       folderStatus[action.payload.folderId] = !folderStatus[action.payload.folderId];
       return  {
         folderState: folderStatus

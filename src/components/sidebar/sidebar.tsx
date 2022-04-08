@@ -15,7 +15,7 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebar, showSidebar }) => {
 
   return (
     <Fragment>
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} id="sidebar">
         <ul className="nav-menu-items">
           <li className="nav-text">
             <span onClick={showSidebar} className="sidebar-main-menu">

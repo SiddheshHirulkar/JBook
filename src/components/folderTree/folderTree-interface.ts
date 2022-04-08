@@ -1,9 +1,22 @@
 export interface FileStructure {
-  [index: number]: { id: string, type: string, name: string }
+  [index: number]: { id: string, type: string, name: string };
 }
 
 export interface FolderTreeStructure {
-  [index: number]: { id: string, type: string, name: string, items?: FileStructure | FolderTreeStructure }
+  [index: number]: { id: string, type: string, name: string, items?: FileStructure | FolderTreeStructure };
+}
+
+export interface NodeFile {
+  id: string;
+  type: string;
+  name: string;
+}
+
+export interface NodeFolder {
+  id: string;
+  type: string;
+  name: string;
+  items?: NodeFile | FolderTreeStructure
 }
 
 export const folderTreeState: FolderTreeStructure = [

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import { FolderTreeStructure } from './folderTree-interface';
+import { FolderTreeStructure, NodeFile, NodeFolder } from './folderTree-interface';
 import './folder-tree.css';
 import { isEmpty, isUndefined } from 'lodash';
 import FolderComponent from './folder-component';
@@ -10,6 +10,14 @@ import { useTypedSelector } from '../../hooks/use-typed-selector';
 
 interface FolderTreeComponentProps {
   folderTreeState: FolderTreeStructure;
+}
+
+interface FolderState {
+  [key: string]: boolean;
+}
+
+interface FolderStatus {
+  folderState: FolderState | {}
 }
 
 const FolderTreeComponent: React.FC<FolderTreeComponentProps> = ({ folderTreeState }) => {

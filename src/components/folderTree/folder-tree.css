@@ -33,6 +33,16 @@
 }
 
 /* ---- CSS for folder specifications ------ */
+.tree-new-folder {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3px 0px 3px 0px;
+  list-style: none;
+  transition: 0.2s;
+}
+
 .tree-folder-container {
   position: relative;
   display: flex;
@@ -85,6 +95,17 @@
 
 .tree-folder-container:hover .tree-folder-icon-specification {
   opacity: 1;
+}
+
+.create-field {
+  border-color: #d16318;
+}
+
+.create-field:focus-visible {
+  border-color: #d16318;
+  box-shadow: 0 0 0 0.1rem #d16318;
+  outline: 0;
+  border-radius: 2px;
 }
 
 /* ---- CSS for file specifications ------ */
@@ -142,6 +163,11 @@
   opacity: 1;
 }
 
+/* ------------------- Common CSS ---------------------- */
 .margin-left-10 {
   margin-left: 10px;
+}
+
+.margin-left-22 {
+  margin-left: 22px;
 }
