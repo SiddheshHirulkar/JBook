@@ -61,13 +61,13 @@ const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick
         <span className="tree-folder-specifications">
           <FontAwesomeIcon className="folder-icon" onClick={folderIconClick} icon={faFolder} />
           {showRenameFolder ? (
-            <p className="folder-text" ref={fieldRef}>
+            <div className="folder-text" ref={fieldRef}>
               <NewFolderFileComponent 
                 setShowField={setShowRenameFolder}
                 childType={fieldType}
                 oldFieldName={folderName}
               />
-            </p>
+            </div>
             ) : (<p className="folder-text">{name}</p>)
           }
         </span>
