@@ -8,7 +8,9 @@ import {
   InsertCellAfterAction,
   Action,
   SetFolderStatusAction,
-  ChangeFolderStatusAction
+  ChangeFolderStatusAction,
+  CreateNewFolderSuccess,
+  CreateNewFolderfailure
 } from '../actions';
 import bundle from '../../bundler';
 
@@ -85,6 +87,28 @@ export const changeFolderStatus = (folderId: string): ChangeFolderStatusAction =
     type: ActionTypes.CHANGE_FOLDER_STATUS,
     payload: {
       folderId
+    }
+  }
+}
+
+/* ------------------------------- Action Creators for CRUD operation of folder ------------------------------ */
+export const createNewFolder = (parentNode: string, newFolderName: string): CreateNewFolderSuccess | CreateNewFolderfailure => {
+  try {
+    return {
+      type: ActionTypes.CREATE_NEW_FOLDER_SUCCESS,
+      payload: {
+        parentNode,
+        newFolderName
+      }
+    }
+  } catch (error) {
+    let message = 'Something went wrong, please try again!';
+    if (error instanceof Error) {
+      message = error.message;
+    }
+    return {
+      type: ActionTypes.CREATE_NEW_FOLDER_FAILURE,
+      error: message
     }
   }
 }

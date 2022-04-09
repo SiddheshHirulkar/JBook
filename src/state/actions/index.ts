@@ -53,20 +53,30 @@ export interface BundleCompleteAction {
 export interface SetFolderStatusAction {
   type: ActionTypes.SET_FOLDER_STATUS;
   payload: {
-    childrenTreeState: object
+    childrenTreeState: object;
   }
 }
 
 export interface ChangeFolderStatusAction {
   type: ActionTypes.CHANGE_FOLDER_STATUS;
   payload: {
-    folderId: string
+    folderId: string;
   }
 }
 
 /* ------------------------ Action for CRUD operation of Folder -------------------------- */
+export interface CreateNewFolderSuccess {
+  type: ActionTypes.CREATE_NEW_FOLDER_SUCCESS;
+  payload: {
+    parentNode: string;
+    newFolderName: string;
+  }
+}
 
-
+export interface CreateNewFolderfailure {
+  type: ActionTypes.CREATE_NEW_FOLDER_FAILURE;
+  error: string;
+}
 
 export type Action = 
   MoveCellAction | 
@@ -76,4 +86,6 @@ export type Action =
   BundleStartAction | 
   BundleCompleteAction |
   SetFolderStatusAction |
-  ChangeFolderStatusAction;
+  ChangeFolderStatusAction |
+  CreateNewFolderSuccess |
+  CreateNewFolderfailure;

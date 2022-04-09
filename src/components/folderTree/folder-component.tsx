@@ -66,6 +66,7 @@ const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick
                 setShowField={setShowRenameFolder}
                 childType={fieldType}
                 oldFieldName={folderName}
+                parentNode={name}
               />
             </div>
             ) : (<p className="folder-text">{name}</p>)
@@ -86,6 +87,7 @@ const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick
               setShowField={setShowNewFolder}
               childType={fieldType}
               oldFieldName={folderName}
+              parentNode={name}
             />
           </div>
         </li>

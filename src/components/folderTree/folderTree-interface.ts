@@ -6,6 +6,13 @@ export interface FolderTreeStructure {
   [index: number]: { id: string, type: string, name: string, items?: FileStructure | FolderTreeStructure };
 }
 
+export interface FolderTree {
+  id: string;
+  type: string;
+  name: string;
+  items?: FileStructure | FolderTreeStructure;
+}
+
 export interface NodeFile {
   id: string;
   type: string;
@@ -19,7 +26,7 @@ export interface NodeFolder {
   items?: NodeFile | FolderTreeStructure
 }
 
-export const folderTreeState: FolderTreeStructure = [
+export const folderTreeState: FolderTree[] = [
   {
     id: 'fruit',
     type: 'folder',

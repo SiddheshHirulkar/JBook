@@ -19,7 +19,7 @@ interface newShowChildrenStateRef {
 
 const FolderTreeContainer: React.FC<FolderTreeContainerProps> = ({ folderTreeState }) => {
   let newShowChildrenState: newShowChildrenStateRef = useRef({});
-  const {setFolderStatus} = useActions();
+  const { setFolderStatus } = useActions();
   const [showNewFolderField, setshowNewFolderField] = useState(false);
   let fieldRef = useRef<HTMLDivElement>(null);
 
@@ -41,13 +41,13 @@ const FolderTreeContainer: React.FC<FolderTreeContainerProps> = ({ folderTreeSta
     }
   });
 
-  const createNewFolder = () => {
+  const handleCreateNewFolder = () => {
     setshowNewFolderField(!showNewFolderField);
   };
 
   return (
     <Fragment>
-      <li className="nav-text" onClick={createNewFolder}>
+      <li className="nav-text" onClick={handleCreateNewFolder}>
         <span className="tree-main-menu">
           <FontAwesomeIcon className="tree-main-menu-icon" icon={faFolderPlus} />
           <p className="tree-main-menu-text">Create New Folder</p>
@@ -60,6 +60,7 @@ const FolderTreeContainer: React.FC<FolderTreeContainerProps> = ({ folderTreeSta
               containerClass="margin-left-22"
               setShowField={setshowNewFolderField}
               childType="folder"
+              parentNode="globalParent"
             />
           </div>
         </li>
