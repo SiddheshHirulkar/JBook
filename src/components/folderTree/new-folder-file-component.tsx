@@ -9,11 +9,12 @@ interface NewFolderFileComponentProps {
   childType: 'folder' | 'file';   // childType is not used for now but it will be fed to an action creator which will add folder or file state
   oldFieldName?: string;
   parentNode: string;
+  folderOperation: 'create' | 'rename' | 'delete';
 }
 
-const NewFolderFileComponent: React.FC<NewFolderFileComponentProps> = ({ containerClass, setShowField, childType, oldFieldName, parentNode }) => {
+const NewFolderFileComponent: React.FC<NewFolderFileComponentProps> = ({ containerClass, setShowField, childType, oldFieldName, parentNode, folderOperation }) => {
   const [fieldName, setFieldName] = useState('');
-  const { createNewFolder } = useActions();
+  const { createNewFolder, changeFolderStatus, renameFolder } = useActions();
 
   useEffect(() => {
     if (!isEmpty(oldFieldName) && !isUndefined(oldFieldName)) {
@@ -23,8 +24,13 @@ const NewFolderFileComponent: React.FC<NewFolderFileComponentProps> = ({ contain
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      createNewFolder(parentNode, fieldName);
+      if (folderOperation === 'create') {
+        createNewFolder(parentNode, fieldName);
+      } else if (folderOperation === 'rename') {
+        renameFolder(parentNode, fieldName);
+      }
       setShowField(false);
+      changeFolderStatus(parentNode, true);
     }
   }
 

@@ -61,6 +61,7 @@ const FolderTreeContainer: React.FC<FolderTreeContainerProps> = ({ folderTreeSta
               setShowField={setshowNewFolderField}
               childType="folder"
               parentNode="globalParent"
+              folderOperation="create"
             />
           </div>
         </li>

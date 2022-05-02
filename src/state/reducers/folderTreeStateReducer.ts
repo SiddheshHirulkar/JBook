@@ -3,7 +3,8 @@ import { produce } from 'immer';
 import { ActionTypes } from "../action-types";
 import { Action } from '../actions';
 import { FolderTree } from '../../components/folderTree/folderTree-interface';
-import { createNewFolderData } from '../../utils/folderTreeUtils';
+import { createNewFolderData, renameExistingFolder, deleteFolderFromTree } from '../../utils/folderTreeUtils';
+import { isUndefined } from 'lodash';
 
 interface FolderTreeState {
   folderState: object;
@@ -41,7 +42,12 @@ export const folderTreeState = produce((state: FolderTreeState = initialState, a
 
     case ActionTypes.CHANGE_FOLDER_STATUS:
       let folderStatus: FolderState = {...state.folderState};
-      folderStatus[action.payload.folderId] = !folderStatus[action.payload.folderId];
+      if (!isUndefined(action.payload.isAlwaysOpen)) {
+        folderStatus[action.payload.folderId] = action.payload.isAlwaysOpen;
+      } else {
+        folderStatus[action.payload.folderId] = !folderStatus[action.payload.folderId];
+      }
+
       return  {
         folderState: folderStatus
       }
@@ -55,11 +61,30 @@ export const folderTreeStructure = produce((state: InitialFolderStructure = init
   switch (action.type) {
     case ActionTypes.CREATE_NEW_FOLDER_SUCCESS:
       const modifiedTreeData = createNewFolderData(state.data, action.payload.newFolderName, action.payload.parentNode);
-      console.log(modifiedTreeData, 'modified tree data')
-        return {
-          data: modifiedTreeData,
-          loading: false
-        }
+      return {
+        data: modifiedTreeData,
+        loading: false
+      }
+    
+    case ActionTypes.CREATE_NEW_FOLDER_FAILURE:
+      return state;
+
+    case ActionTypes.RENAME_FOLDER_SUCCESS:
+      const afterRenameTreeData = renameExistingFolder(state.data, action.payload.folderRename, action.payload.parentNode);
+      return {
+        data: afterRenameTreeData,
+        loading: false
+      }
+    
+    case ActionTypes.RENAME_FOLDER_FAILURE:
+      return state;
+
+    case ActionTypes.DELETE_FOLDER_SUCCESS:
+      const afterDeletionTreeData = deleteFolderFromTree(state.data, action.payload.folderId);
+      return {
+        data: afterDeletionTreeData,
+        loading: false
+      }
 
     default:
       return state;

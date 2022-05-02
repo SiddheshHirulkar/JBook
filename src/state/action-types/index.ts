@@ -11,7 +11,14 @@ export enum ActionTypes {
   CHANGE_FOLDER_STATUS = 'change_folder_status',
 
   /* Action types for creating folder */
-  CREATE_NEW_FOLDER = 'create_new_folder',
   CREATE_NEW_FOLDER_SUCCESS = 'create_new_folder_success',
-  CREATE_NEW_FOLDER_FAILURE = 'create_new_folder_failure'
+  CREATE_NEW_FOLDER_FAILURE = 'create_new_folder_failure',
+
+  /* Action types for renaming folder */
+  RENAME_FOLDER_SUCCESS = 'rename_folder_success',
+  RENAME_FOLDER_FAILURE = 'rename_folder_failure',
+
+  /* Action types for deleting folder */
+  DELETE_FOLDER_SUCCESS = 'delete_folder_success',
+  DELETE_FOLDER_FAILURE = 'delete_folder_failure'
 };

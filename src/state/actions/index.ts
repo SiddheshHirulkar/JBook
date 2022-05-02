@@ -61,6 +61,7 @@ export interface ChangeFolderStatusAction {
   type: ActionTypes.CHANGE_FOLDER_STATUS;
   payload: {
     folderId: string;
+    isAlwaysOpen?: boolean;
   }
 }
 
@@ -78,6 +79,31 @@ export interface CreateNewFolderfailure {
   error: string;
 }
 
+export interface RenameFolderSuccess {
+  type: ActionTypes.RENAME_FOLDER_SUCCESS;
+  payload: {
+    parentNode: string;
+    folderRename: string;
+  }
+}
+
+export interface RenameFolderFailure {
+  type: ActionTypes.RENAME_FOLDER_FAILURE;
+  error: string;
+}
+
+export interface DeleteFolderSuccess {
+  type: ActionTypes.DELETE_FOLDER_SUCCESS;
+  payload: {
+    folderId: string;
+  }
+}
+
+export interface DeleteFolderFailure {
+  type: ActionTypes.DELETE_FOLDER_FAILURE;
+  error: string;
+}
+
 export type Action = 
   MoveCellAction | 
   DeleteCellAction | 
@@ -88,4 +114,8 @@ export type Action =
   SetFolderStatusAction |
   ChangeFolderStatusAction |
   CreateNewFolderSuccess |
-  CreateNewFolderfailure;
+  CreateNewFolderfailure |
+  RenameFolderSuccess |
+  RenameFolderFailure |
+  DeleteFolderSuccess |
+  DeleteFolderFailure;

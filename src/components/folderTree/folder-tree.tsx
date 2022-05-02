@@ -22,7 +22,7 @@ interface FolderStatus {
 
 const FolderTreeComponent: React.FC<FolderTreeComponentProps> = ({ folderTreeState }) => {
 
-  const {changeFolderStatus} = useActions();
+  const { changeFolderStatus } = useActions();
   const folderStatus: any = useTypedSelector((state) => {
     return state.folderTreeState;
   });
