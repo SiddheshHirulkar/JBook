@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { FolderTree } from '../components/folderTree/folderTree-interface';
 
+/* ---------------------------------- Utility functions for folders --------------------------------------- */
+
 export const createNewFolderData = (treeData: FolderTree[], newFolderName: string, parentNode: string) :FolderTree[] => {
   let newTreeData: FolderTree[] = cloneDeep(treeData);
   const newFolderData: FolderTree = {
@@ -31,6 +33,7 @@ const searchTermInTree = (treeArray: FolderTree[], parentId: string, folderOpera
   if (treeArray.length >= 0) {
     let elementAppended = false;
 
+    debugger;
     treeArray.forEach((element: any) => {
       if (element.type === 'folder') {
         if (element.id === parentId) {
@@ -39,6 +42,19 @@ const searchTermInTree = (treeArray: FolderTree[], parentId: string, folderOpera
               element.items = [...element.items, newFolderData];
               elementAppended = true;
               break;
+            
+            case 'rename':
+              element.name = newFolderData;
+              elementAppended = true;
+              break;
+
+            default:
+              break;
+          }
+        }
+      } else if (element.type === 'file') {
+        if (element.id === parentId) {
+          switch (folderOperation) {
             
             case 'rename':
               element.name = newFolderData;
@@ -167,4 +183,19 @@ const deleteTermFromTree = (treeArray: FolderTree[], parentId: string, folderOpe
   }
 
   return treeArray;
+};
+
+/* ---------------------------------- Utility functions for files --------------------------------------- */
+
+export const createNewFileData = (treeData: FolderTree[], newFileName: string, parentNode: string) :FolderTree[] => {
+  let newTreeData: FolderTree[] = cloneDeep(treeData);
+  const newFileData: FolderTree = {
+    id: uuidv4(),
+    type: 'file',
+    name: newFileName
+  }
+
+  newTreeData = breadthFirstSearch(treeData, newFileData, parentNode);
+
+  return newTreeData;
 };

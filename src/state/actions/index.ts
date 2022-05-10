@@ -65,7 +65,7 @@ export interface ChangeFolderStatusAction {
   }
 }
 
-/* ------------------------ Action for CRUD operation of Folder -------------------------- */
+/* ------------------------ Actions for CRUD operation of Folder -------------------------- */
 export interface CreateNewFolderSuccess {
   type: ActionTypes.CREATE_NEW_FOLDER_SUCCESS;
   payload: {
@@ -104,6 +104,45 @@ export interface DeleteFolderFailure {
   error: string;
 }
 
+/* ------------------------ Actions for CRUD operation of Files -------------------------- */
+export interface CreateNewFileSuccess {
+  type: ActionTypes.CREATE_NEW_FILE_SUCCESS;
+  payload: {
+    parentNode: string;
+    newFileName: string;
+  }
+}
+
+export interface CreateNewFileFailure {
+  type: ActionTypes.CREATE_NEW_FILE_FAILURE;
+  error: string;
+}
+
+export interface RenameFileSuccess {
+  type: ActionTypes.RENAME_FILE_SUCCESS;
+  payload: {
+    parentNode: string;
+    fileRename: string;
+  }
+}
+
+export interface RenameFileFailure {
+  type: ActionTypes.RENAME_FILE_FAILURE;
+  error: string;
+}
+
+export interface DeleteFileSuccess {
+  type: ActionTypes.DELETE_FILE_SUCCESS;
+  payload: {
+    folderId: string;
+  }
+}
+
+export interface DeleteFileFailure {
+  type: ActionTypes.DELETE_FILE_FAILURE;
+  error: string;
+}
+
 export type Action = 
   MoveCellAction | 
   DeleteCellAction | 
@@ -118,4 +157,10 @@ export type Action =
   RenameFolderSuccess |
   RenameFolderFailure |
   DeleteFolderSuccess |
-  DeleteFolderFailure;
+  DeleteFolderFailure |
+  CreateNewFileSuccess |
+  CreateNewFileFailure |
+  RenameFileSuccess |
+  RenameFileFailure |
+  DeleteFileSuccess |
+  DeleteFileFailure;

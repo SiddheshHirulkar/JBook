@@ -20,5 +20,17 @@ export enum ActionTypes {
 
   /* Action types for deleting folder */
   DELETE_FOLDER_SUCCESS = 'delete_folder_success',
-  DELETE_FOLDER_FAILURE = 'delete_folder_failure'
+  DELETE_FOLDER_FAILURE = 'delete_folder_failure',
+
+  /* Action types for creating file */
+  CREATE_NEW_FILE_SUCCESS = 'create_new_file_success',
+  CREATE_NEW_FILE_FAILURE = 'create_new_file_failure',
+
+  /* Action types for renaming file */
+  RENAME_FILE_SUCCESS = 'rename_file_success',
+  RENAME_FILE_FAILURE = 'rename_file_failure',
+
+  /* Action types for deleting file */
+  DELETE_FILE_SUCCESS = 'delete_file_success',
+  DELETE_FILE_FAILURE = 'delete_file_failure',
 };

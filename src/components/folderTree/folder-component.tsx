@@ -51,6 +51,7 @@ const FolderComponent: React.FC<FolderComponentProps> = ({ id, name, handleClick
 
   const createNewFile = () => {
     setFieldType('file');
+    setFolderOperation('create');
     setShowNewFolder(!showNewFolder);
   }
 

@@ -14,7 +14,13 @@ import {
   RenameFolderSuccess,
   RenameFolderFailure,
   DeleteFolderSuccess,
-  DeleteFolderFailure
+  DeleteFolderFailure,
+  CreateNewFileSuccess,
+  CreateNewFileFailure,
+  RenameFileSuccess,
+  RenameFileFailure,
+  DeleteFileSuccess,
+  DeleteFileFailure
 } from '../actions';
 import bundle from '../../bundler';
 
@@ -154,6 +160,69 @@ export const deleteFolder = (folderId: string): DeleteFolderSuccess | DeleteFold
     }
     return {
       type: ActionTypes.DELETE_FOLDER_FAILURE,
+      error: message
+    }
+  }
+}
+
+/* ------------------------------- Action Creators for CRUD operation of file ------------------------------ */
+export const createNewFile = (parentNode: string, newFileName: string): CreateNewFileSuccess | CreateNewFileFailure => {
+  try {
+    return {
+      type: ActionTypes.CREATE_NEW_FILE_SUCCESS,
+      payload: {
+        parentNode,
+        newFileName
+      }
+    }
+  } catch (error) {
+    let message = 'Something went wrong, please try again!';
+    if (error instanceof Error) {
+      message = error.message;
+    }
+    return {
+      type: ActionTypes.CREATE_NEW_FILE_FAILURE,
+      error: message
+    }
+  }
+}
+
+export const renameFile = (parentNode: string, fileRename: string): RenameFileSuccess | RenameFileFailure => {
+  try {
+    return {
+      type: ActionTypes.RENAME_FILE_SUCCESS,
+      payload: {
+        parentNode,
+        fileRename
+      }
+    }
+  } catch (error) {
+    let message = 'Something went wrong, please try again!';
+    if (error instanceof Error) {
+      message = error.message;
+    }
+    return {
+      type: ActionTypes.RENAME_FILE_FAILURE,
+      error: message
+    }
+  }
+}
+
+export const deleteFile = (folderId: string): DeleteFileSuccess | DeleteFileFailure => {
+  try {
+    return {
+      type: ActionTypes.DELETE_FILE_SUCCESS,
+      payload: {
+        folderId
+      }
+    }
+  } catch (error) {
+    let message = 'Something went wrong, please try again!';
+    if (error instanceof Error) {
+      message = error.message;
+    }
+    return {
+      type: ActionTypes.DELETE_FILE_FAILURE,
       error: message
     }
   }

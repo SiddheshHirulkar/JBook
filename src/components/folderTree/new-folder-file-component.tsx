@@ -6,7 +6,7 @@ import { useActions } from '../../hooks/use-actions';
 interface NewFolderFileComponentProps {
   containerClass?: string;
   setShowField: (fieldShow: boolean) => void;
-  childType: 'folder' | 'file';   // childType is not used for now but it will be fed to an action creator which will add folder or file state
+  childType: 'folder' | 'file';
   oldFieldName?: string;
   parentNode: string;
   folderOperation: 'create' | 'rename' | 'delete';
@@ -14,7 +14,7 @@ interface NewFolderFileComponentProps {
 
 const NewFolderFileComponent: React.FC<NewFolderFileComponentProps> = ({ containerClass, setShowField, childType, oldFieldName, parentNode, folderOperation }) => {
   const [fieldName, setFieldName] = useState('');
-  const { createNewFolder, changeFolderStatus, renameFolder } = useActions();
+  const { createNewFolder, changeFolderStatus, renameFolder, createNewFile, renameFile } = useActions();
 
   useEffect(() => {
     if (!isEmpty(oldFieldName) && !isUndefined(oldFieldName)) {
@@ -25,9 +25,17 @@ const NewFolderFileComponent: React.FC<NewFolderFileComponentProps> = ({ contain
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       if (folderOperation === 'create') {
-        createNewFolder(parentNode, fieldName);
+        if (childType === 'folder') {
+          createNewFolder(parentNode, fieldName);
+        } else {
+          createNewFile(parentNode, fieldName);
+        }
       } else if (folderOperation === 'rename') {
-        renameFolder(parentNode, fieldName);
+        if (childType === 'folder') {
+          renameFolder(parentNode, fieldName);
+        } else {
+          renameFile(parentNode, fieldName);
+        }
       }
       setShowField(false);
       changeFolderStatus(parentNode, true);

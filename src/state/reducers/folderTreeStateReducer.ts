@@ -3,7 +3,7 @@ import { produce } from 'immer';
 import { ActionTypes } from "../action-types";
 import { Action } from '../actions';
 import { FolderTree } from '../../components/folderTree/folderTree-interface';
-import { createNewFolderData, renameExistingFolder, deleteFolderFromTree } from '../../utils/folderTreeUtils';
+import { createNewFolderData, renameExistingFolder, deleteFolderFromTree, createNewFileData } from '../../utils/folderTreeUtils';
 import { isUndefined } from 'lodash';
 
 interface FolderTreeState {
@@ -85,6 +85,39 @@ export const folderTreeStructure = produce((state: InitialFolderStructure = init
         data: afterDeletionTreeData,
         loading: false
       }
+    
+    case ActionTypes.DELETE_FOLDER_FAILURE:
+      return state;
+
+    case ActionTypes.CREATE_NEW_FILE_SUCCESS:
+      const newTreeData = createNewFileData(state.data, action.payload.newFileName, action.payload.parentNode);
+      return {
+        data: newTreeData,
+        loading: false
+      }
+    
+    case ActionTypes.CREATE_NEW_FILE_FAILURE:
+      return state;
+
+    case ActionTypes.RENAME_FILE_SUCCESS:
+      const fileRenamedData = renameExistingFolder(state.data, action.payload.fileRename, action.payload.parentNode);
+      return {
+        data: fileRenamedData,
+        loading: false
+      }
+    
+    case ActionTypes.RENAME_FILE_FAILURE:
+      return state;
+
+    case ActionTypes.DELETE_FILE_SUCCESS:
+      const afterDeleteFileTreeData = deleteFolderFromTree(state.data, action.payload.folderId);
+      return {
+        data: afterDeleteFileTreeData,
+        loading: false
+      }
+    
+    case ActionTypes.DELETE_FILE_FAILURE:
+      return state;
 
     default:
       return state;
