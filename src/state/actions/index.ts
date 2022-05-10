@@ -53,20 +53,95 @@ export interface BundleCompleteAction {
 export interface SetFolderStatusAction {
   type: ActionTypes.SET_FOLDER_STATUS;
   payload: {
-    childrenTreeState: object
+    childrenTreeState: object;
   }
 }
 
 export interface ChangeFolderStatusAction {
   type: ActionTypes.CHANGE_FOLDER_STATUS;
   payload: {
-    folderId: string
+    folderId: string;
+    isAlwaysOpen?: boolean;
   }
 }
 
-/* ------------------------ Action for CRUD operation of Folder -------------------------- */
+/* ------------------------ Actions for CRUD operation of Folder -------------------------- */
+export interface CreateNewFolderSuccess {
+  type: ActionTypes.CREATE_NEW_FOLDER_SUCCESS;
+  payload: {
+    parentNode: string;
+    newFolderName: string;
+  }
+}
 
+export interface CreateNewFolderfailure {
+  type: ActionTypes.CREATE_NEW_FOLDER_FAILURE;
+  error: string;
+}
 
+export interface RenameFolderSuccess {
+  type: ActionTypes.RENAME_FOLDER_SUCCESS;
+  payload: {
+    parentNode: string;
+    folderRename: string;
+  }
+}
+
+export interface RenameFolderFailure {
+  type: ActionTypes.RENAME_FOLDER_FAILURE;
+  error: string;
+}
+
+export interface DeleteFolderSuccess {
+  type: ActionTypes.DELETE_FOLDER_SUCCESS;
+  payload: {
+    folderId: string;
+  }
+}
+
+export interface DeleteFolderFailure {
+  type: ActionTypes.DELETE_FOLDER_FAILURE;
+  error: string;
+}
+
+/* ------------------------ Actions for CRUD operation of Files -------------------------- */
+export interface CreateNewFileSuccess {
+  type: ActionTypes.CREATE_NEW_FILE_SUCCESS;
+  payload: {
+    parentNode: string;
+    newFileName: string;
+  }
+}
+
+export interface CreateNewFileFailure {
+  type: ActionTypes.CREATE_NEW_FILE_FAILURE;
+  error: string;
+}
+
+export interface RenameFileSuccess {
+  type: ActionTypes.RENAME_FILE_SUCCESS;
+  payload: {
+    parentNode: string;
+    fileRename: string;
+  }
+}
+
+export interface RenameFileFailure {
+  type: ActionTypes.RENAME_FILE_FAILURE;
+  error: string;
+}
+
+export interface DeleteFileSuccess {
+  type: ActionTypes.DELETE_FILE_SUCCESS;
+  payload: {
+    folderId: string;
+  }
+}
+
+export interface DeleteFileFailure {
+  type: ActionTypes.DELETE_FILE_FAILURE;
+  error: string;
+}
 
 export type Action = 
   MoveCellAction | 
@@ -76,4 +151,16 @@ export type Action =
   BundleStartAction | 
   BundleCompleteAction |
   SetFolderStatusAction |
-  ChangeFolderStatusAction;
+  ChangeFolderStatusAction |
+  CreateNewFolderSuccess |
+  CreateNewFolderfailure |
+  RenameFolderSuccess |
+  RenameFolderFailure |
+  DeleteFolderSuccess |
+  DeleteFolderFailure |
+  CreateNewFileSuccess |
+  CreateNewFileFailure |
+  RenameFileSuccess |
+  RenameFileFailure |
+  DeleteFileSuccess |
+  DeleteFileFailure;

@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 import FolderTreeContainer from '../folderTree/folder-tree-container';
-import { folderTreeState } from '../folderTree/folderTree-interface';
+// import { folderTreeState } from '../folderTree/folderTree-interface';
+import { useTypedSelector } from '../../hooks/use-typed-selector';
 import './sidebar.css';
 
 interface SidebarProps {
@@ -13,9 +14,13 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ sidebar, showSidebar }) => {
 
+  const folderTreeState: any = useTypedSelector((state) => {
+    return state.folderTreeStructure.data;
+  });
+
   return (
     <Fragment>
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} id="sidebar">
         <ul className="nav-menu-items">
           <li className="nav-text">
             <span onClick={showSidebar} className="sidebar-main-menu">
