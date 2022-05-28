@@ -2,19 +2,22 @@ import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { store } from './state';
-import CellList from './components/cell-list';
 import Navbar from './components/navbar/navbar';
+import ShowCellList from './components/show-cellList';
 import './app.css';
 
 const App = () => {
   return (
     <Provider store={store}>
       <Navbar />
-      <div className="display-flex">
-        <div className="cell-container"><CellList /></div>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={ShowCellList} />
+        </Switch>
+      </Router>
     </Provider>
   );
 };
