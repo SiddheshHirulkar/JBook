@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { store } from './state';
 import Navbar from './components/navbar/navbar';
 import ShowCellList from './components/show-cellList';
+import ErrorPage from './components/notFound/error-page';
+import LandingPage from './components/landingPage/landing-page';
 import './app.css';
 
 const App = () => {
@@ -15,7 +17,9 @@ const App = () => {
       <Navbar />
       <Router>
         <Switch>
+          {/* <Route exact path="/" component={LandingPage} /> */}
           <Route exact path="/" component={ShowCellList} />
+          <Route component={ErrorPage} />
         </Switch>
       </Router>
     </Provider>
