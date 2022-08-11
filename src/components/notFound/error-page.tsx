@@ -1,11 +1,24 @@
-import React from 'react';
+import { isNull } from 'lodash';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './error-page.css';
 
 const ErrorPage: React.FC = () => {
+  const documentBodyNode = document.querySelector('body');
+  const documentHtmlNode = document.querySelector('html');
+
+  useEffect(() => {
+    if (!isNull(documentBodyNode) && !isNull(documentHtmlNode)) {
+      documentBodyNode.style.height = "100%";
+      documentBodyNode.style.overflow = "hidden";
+      documentHtmlNode.style.height = "100%";
+      documentHtmlNode.style.overflow = "hidden";
+    }
+  }, [documentBodyNode, documentHtmlNode]);
+
   return (
-    <div>
+    <div className="error-page-container">
         <header className="top-header">
       </header>
 

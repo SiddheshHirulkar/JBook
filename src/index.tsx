@@ -17,8 +17,8 @@ const App = () => {
       <Navbar />
       <Router>
         <Switch>
-          {/* <Route exact path="/" component={LandingPage} /> */}
-          <Route exact path="/" component={ShowCellList} />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/cellList" component={ShowCellList} />
           <Route component={ErrorPage} />
         </Switch>
       </Router>

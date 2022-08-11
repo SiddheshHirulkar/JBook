@@ -33,7 +33,6 @@ const searchTermInTree = (treeArray: FolderTree[], parentId: string, folderOpera
   if (treeArray.length >= 0) {
     let elementAppended = false;
 
-    debugger;
     treeArray.forEach((element: any) => {
       if (element.type === 'folder') {
         if (element.id === parentId) {
