@@ -14,8 +14,8 @@ import './app.css';
 const App = () => {
   return (
     <Provider store={store}>
-      <Navbar />
       <Router>
+      <Navbar />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/cellList" component={ShowCellList} />

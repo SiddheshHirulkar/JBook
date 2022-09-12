@@ -2,13 +2,17 @@ import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight, faArrowDownLong, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { isNull } from 'lodash';
+import { useHistory } from 'react-router';
 
 import VideoPlayer from '../videoPlayer/video-player';
 import Footer from '../Footer/footer';
+import { useActions } from '../../hooks/use-actions';
 import './landing-page.css';
 
 const LandingPage: React.FC = () => {
   const documentHtmlNode = document.querySelector('html');
+  const history = useHistory();
+  const { storePageLocation } = useActions();
 
   useEffect(() => {
     if (!isNull(documentHtmlNode)) {
@@ -17,23 +21,31 @@ const LandingPage: React.FC = () => {
     }
   }, [documentHtmlNode]);
 
+  useEffect(() => {
+    storePageLocation(history.location.pathname);
+  }, [])
+
+  const handleTryNow = () => {
+    history.push('/cellList');
+  };
+
   return (
     <div className="landing-page-wrapper">
       <div className="landing-page-container">
 
         {/* ----------------------- Product Description --------------------------- */}
         <section className="product-description-wrapper">
-          <h2 className="main-title">A Notebook For Programmers</h2>
+          <h2 className="main-title margin-top-20">A Notebook For Programmers</h2>
           <div className="description-wrapper">
             <p className="description-text">
-              Codebook is a platform where developers can take notes of their coding concepts
+              CodeBook is a platform where developers can take notes of their coding concepts
               with real time compilation of their code
             </p>
             <p className="sub-description-text">
               It also supports Markdown
             </p>
             <div className="description-button-wrapper">
-              <button className="try-btn margin-right-10">
+              <button onClick={handleTryNow} className="try-btn margin-right-10">
                 Try now &nbsp;<FontAwesomeIcon icon={faArrowAltCircleRight} />
               </button>
               <button className="sign-in-btn">Sign In &nbsp;<FontAwesomeIcon icon={faUserCircle} /></button>

@@ -181,9 +181,13 @@
   margin-top: 5%;
 }
 
+.margin-top-20 {
+  margin-top: 20px;
+}
+
 .try-markdown-btn {
   border: none;
-  background-color: #28a745;
+  background-color: green;
   padding: 15px 30px;
   border-radius: 5px;
   cursor: pointer;
@@ -199,7 +203,7 @@
 }
 
 .try-markdown-btn:active {
-  border: 2px solid #28a745;
+  border: 2px solid green;
   padding: 13px 28px;
 }
 

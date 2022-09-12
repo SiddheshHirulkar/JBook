@@ -143,6 +143,14 @@ export interface DeleteFileFailure {
   error: string;
 }
 
+/* ------------------------ Actions for CRUD operation of Files -------------------------- */
+export interface StoreLocationSuccess {
+  type: ActionTypes.STORE_LOCATION_SUCCESS;
+  payload: {
+    pageLocation: string;
+  }
+}
+
 export type Action = 
   MoveCellAction | 
   DeleteCellAction | 
@@ -163,4 +171,5 @@ export type Action =
   RenameFileSuccess |
   RenameFileFailure |
   DeleteFileSuccess |
-  DeleteFileFailure;
+  DeleteFileFailure |
+  StoreLocationSuccess;
