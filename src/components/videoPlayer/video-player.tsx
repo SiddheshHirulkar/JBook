@@ -4,7 +4,7 @@ import './video-player.css';
 
 const VideoPlayer: React.FC = () => {
   return (
-    <div className="player-component-wrapper">
+    <div className="player-component-wrapper margin-top-20">
       <div className="player-text-wrapper">
         <h2 className="player-text-heading">
           Compile JavaScript in run time and get the results
