@@ -33,4 +33,7 @@ export enum ActionTypes {
   /* Action types for deleting file */
   DELETE_FILE_SUCCESS = 'delete_file_success',
   DELETE_FILE_FAILURE = 'delete_file_failure',
+
+  /* Action type for storing page location */
+  STORE_LOCATION_SUCCESS = 'store_location_success'
 };

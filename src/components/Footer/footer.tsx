@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faFileContract, faLaptopCode, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 import './footer.css';
 
@@ -17,10 +18,10 @@ const Footer: React.FC = () => {
           <FontAwesomeIcon className="footer-title-icon" icon={faLaptopCode} />
         </h3>
         <p className="footer-links">
-          <a href="#" className="link-1">Home</a>
-          <a href="#">Pricing</a>
-          <a href="#">Contact</a>
-          <a href="#">FAQ</a>
+          <Link to="#" className="link-1">Home</Link>
+          <Link to="#">Pricing</Link>
+          <Link to="#">Contact</Link>
+          <Link to="#">FAQ</Link>
         </p>
         <p className="footer-company-name">Siddhesh Hirulkar © 2022</p>
       </div>
@@ -28,17 +29,17 @@ const Footer: React.FC = () => {
       <div className="footer-center">
         <div>
           <i className="footer-center-icon"><FontAwesomeIcon icon={faUserShield} /></i>
-          <p><a href="#">Privacy Policy</a></p>
+          <p><Link to="#">Privacy Policy</Link></p>
         </div>
 
         <div>
           <i className="footer-center-icon"><FontAwesomeIcon icon={faFileContract} /></i>
-          <p><a href="#">Terms & Conditions</a></p>
+          <p><Link to="#">Terms & Conditions</Link></p>
         </div>
 
         <div>
           <i className="footer-center-icon"><FontAwesomeIcon icon={faEnvelope} /></i>
-          <p><a href="mailto:hirulkarsiddhu@gmail.com">hirulkarsiddhu@gmail.com</a></p>
+          <p><Link to="mailto:hirulkarsiddhu@gmail.com">hirulkarsiddhu@gmail.com</Link></p>
         </div>
       </div>
 
@@ -52,8 +53,8 @@ const Footer: React.FC = () => {
           </p>
         </div>
         <div className="footer-icons">
-          <a href="#"><FontAwesomeIcon icon={iconLinkedIn} /></a>
-          <a href="#"><FontAwesomeIcon icon={iconGithub} /></a>
+          <Link to="#"><FontAwesomeIcon icon={iconLinkedIn} /></Link>
+          <Link to="#"><FontAwesomeIcon icon={iconGithub} /></Link>
         </div>
       </div>
 

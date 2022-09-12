@@ -20,7 +20,8 @@ import {
   RenameFileSuccess,
   RenameFileFailure,
   DeleteFileSuccess,
-  DeleteFileFailure
+  DeleteFileFailure,
+  StoreLocationSuccess
 } from '../actions';
 import bundle from '../../bundler';
 
@@ -224,6 +225,16 @@ export const deleteFile = (folderId: string): DeleteFileSuccess | DeleteFileFail
     return {
       type: ActionTypes.DELETE_FILE_FAILURE,
       error: message
+    }
+  }
+}
+
+/* ---------------------- Action Creator for storing page location --------------------- */
+export const storePageLocation = (location: string): StoreLocationSuccess => {
+  return {
+    type: ActionTypes.STORE_LOCATION_SUCCESS,
+    payload: {
+      pageLocation: location
     }
   }
 }
