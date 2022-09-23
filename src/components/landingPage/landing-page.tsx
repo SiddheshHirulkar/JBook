@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleRight, faArrowDownLong, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faArrowAltCircleRight, faArrowDownLong, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 import { isNull } from 'lodash';
 import { useHistory } from 'react-router';
 
@@ -29,13 +29,18 @@ const LandingPage: React.FC = () => {
     history.push('/cellList');
   };
 
+  const handleLogIn = () => {
+    history.push('/signIn');
+    storePageLocation(history.location.pathname);
+  };
+
   return (
     <div className="landing-page-wrapper">
       <div className="landing-page-container">
 
         {/* ----------------------- Product Description --------------------------- */}
         <section className="product-description-wrapper">
-          <h2 className="main-title margin-top-20">A Notebook For Programmers</h2>
+          <h2 className="main-title margin-top-40">A Notebook For Programmers</h2>
           <div className="description-wrapper">
             <p className="description-text">
               CodeBook is a platform where developers can take notes of their coding concepts
@@ -48,7 +53,9 @@ const LandingPage: React.FC = () => {
               <button onClick={handleTryNow} className="try-btn margin-right-10">
                 Try now &nbsp;<FontAwesomeIcon icon={faArrowAltCircleRight} />
               </button>
-              <button className="sign-in-btn">Sign In &nbsp;<FontAwesomeIcon icon={faUserCircle} /></button>
+              <button onClick={handleLogIn} className="sign-in-btn">
+                Log In &nbsp;<FontAwesomeIcon icon={faSignInAlt} />
+              </button>
             </div>
           </div>
         </section>

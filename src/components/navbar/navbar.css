@@ -56,13 +56,26 @@
   align-items: center;  
 }
 
-.sign-in-button {
-  background-color: #0d6efd;
-  color: white;
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-btn {
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.sign-up-button {
+  background-color: #DC3545;
+  color: white;
+}
+
+.sign-in-button {
+  background-color: #0d6efd;
+  color: white;
 }
 
 .sign-in-button-icon {
