@@ -9,6 +9,7 @@ import Navbar from './components/navbar/navbar';
 import ShowCellList from './components/show-cellList';
 import ErrorPage from './components/notFound/error-page';
 import LandingPage from './components/landingPage/landing-page';
+import SignIn from './components/signIn/sign-in';
 import './app.css';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/cellList" component={ShowCellList} />
+          <Route exact path="/signIn" component={SignIn} />
           <Route component={ErrorPage} />
         </Switch>
       </Router>
