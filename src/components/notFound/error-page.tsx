@@ -1,5 +1,5 @@
-import { isNull } from 'lodash';
 import React, { useEffect } from 'react';
+import { isNull } from 'lodash';
 import { Link } from 'react-router-dom';
 
 import './error-page.css';
@@ -14,6 +14,15 @@ const ErrorPage: React.FC = () => {
       documentBodyNode.style.overflow = "hidden";
       documentHtmlNode.style.height = "100%";
       documentHtmlNode.style.overflow = "hidden";
+    }
+
+    return () => {
+      if (!isNull(documentBodyNode) && !isNull(documentHtmlNode)) {
+        documentBodyNode.style.removeProperty("height");
+        documentBodyNode.style.removeProperty("overflow");
+        documentHtmlNode.style.removeProperty("height");
+        documentHtmlNode.style.removeProperty("overflow");
+      }
     }
   }, [documentBodyNode, documentHtmlNode]);
 

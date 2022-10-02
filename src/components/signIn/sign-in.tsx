@@ -1,16 +1,24 @@
 import React from 'react'
 import { faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { useHistory } from 'react-router';
 
 import './sign-in.css';
 import LoginForm from './login-form';
-import { Link } from 'react-router-dom';
-import { faGithub, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { useActions } from '../../hooks/use-actions';
 
 const SignIn: React.FC = () => {
   const iconGithub = faGithub as IconProp;
   const iconFacebook = faFacebook as IconProp;
+  const history = useHistory();
+  const { storePageLocation } = useActions();
+
+  const handleSignUp = () => {
+    history.push('/signUp');
+    storePageLocation(history.location.pathname);
+  };
 
   return (
     <div className="sign-in-page-wrapper">
@@ -62,7 +70,7 @@ const SignIn: React.FC = () => {
         </div>
 
         <div className="sign-up-text">Need an account? 
-          <Link className="sign-up-link" to="#"> Sign up now!</Link>
+          <span onClick={handleSignUp} className="sign-up-link"> Sign up now!</span>
         </div>
       </div>
     </div>
