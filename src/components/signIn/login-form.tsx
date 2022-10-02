@@ -34,7 +34,7 @@ const LoginForm: React.FC = () => {
           value={password}
           type="password"
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Use strong password"
+          placeholder="Enter Password"
         />
       </div>
       <div className="form-button">

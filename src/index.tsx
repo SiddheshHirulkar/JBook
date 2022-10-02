@@ -10,6 +10,7 @@ import ShowCellList from './components/show-cellList';
 import ErrorPage from './components/notFound/error-page';
 import LandingPage from './components/landingPage/landing-page';
 import SignIn from './components/signIn/sign-in';
+import SignUp from './components/signUp/sign-up';
 import './app.css';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/cellList" component={ShowCellList} />
           <Route exact path="/signIn" component={SignIn} />
+          <Route exact path="/signUp" component={SignUp} />
           <Route component={ErrorPage} />
         </Switch>
       </Router>

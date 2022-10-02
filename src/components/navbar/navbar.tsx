@@ -51,10 +51,10 @@ const Navbar: React.FC = () => {
                 </h3>
               </div>
               <div className="navbar-buttons">
-                <div onClick={handleSignUp} className="navbar-btn sign-up-button margin-right-30">
+                {location !== '/signUp' && (<div onClick={handleSignUp} className="navbar-btn sign-up-button margin-right-30">
                   Sign Up
                   <FontAwesomeIcon className="sign-in-button-icon" icon={faUserPlus} />
-                </div>
+                </div>)}
                 {location !== '/signIn' && (<div onClick={handleLogIn} className="navbar-btn sign-in-button margin-right-30">
                   Log In
                   <FontAwesomeIcon className="sign-in-button-icon" icon={faSignInAlt} />
