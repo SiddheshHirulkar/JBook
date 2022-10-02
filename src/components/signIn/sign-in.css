@@ -94,8 +94,8 @@
 }
 
 .sign-up-link {
-  text-decoration: none;
   color: lightseagreen;
+  cursor: pointer;
 }
 
 .sign-up-link:hover {
