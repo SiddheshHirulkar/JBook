@@ -1,5 +1,6 @@
 {
   "name": "jbook",
+  "homepage": "https://SiddheshHirulkar.github.io/JBook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -48,8 +49,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -73,6 +76,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.179",
-    "@types/uuid": "^8.3.4"
+    "@types/uuid": "^8.3.4",
+    "gh-pages": "^5.0.0"
   }
 }
