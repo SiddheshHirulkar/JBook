@@ -20,6 +20,7 @@ const App = () => {
       <Navbar />
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          <Route exact path="/JBook" component={LandingPage} />
           <Route exact path="/cellList" component={ShowCellList} />
           <Route exact path="/signIn" component={SignIn} />
           <Route exact path="/signUp" component={SignUp} />
