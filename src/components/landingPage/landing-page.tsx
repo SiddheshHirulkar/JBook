@@ -47,7 +47,7 @@ const LandingPage: React.FC = () => {
               with real time compilation of their code
             </p>
             <p className="sub-description-text">
-              It also supports Markdown
+              It also supports Markdown asdsadsafsafadf
             </p>
             <div className="description-button-wrapper">
               <button onClick={handleTryNow} className="try-btn margin-right-10">
